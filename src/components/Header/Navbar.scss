@@ -1,0 +1,35 @@
+.nav-bar {
+    font-size: 12px;
+    line-height: 12px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    color: aliceblue;
+    background-color: black;
+    .nav-bar__center {
+        width: 100%;
+        max-width: 1024px;
+        display: flex;
+        margin: auto;
+        height: 44px;
+        ul {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            list-style-type: none;
+            span {
+                // text-decoration: none;
+                color: aliceblue;
+            }
+        }
+    }
+}
+
+.icon-navbar {
+    font-size: 14px;
+}
+
+.search-icon {
+    padding-top: 2px;
+}
