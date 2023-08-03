@@ -38,6 +38,7 @@
         ]
     },
     "devDependencies": {
-        "sass": "^1.64.2"
+        "sass": "^1.64.2",
+        "swiper": "^10.1.0"
     }
 }

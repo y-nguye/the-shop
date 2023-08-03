@@ -1,9 +1,13 @@
-import { Microsoft, Search, Bag } from 'react-bootstrap-icons';
+import { Search, Bag } from 'react-bootstrap-icons';
+import logo from './img/thegioididong-logo.png';
 import './Navbar.scss';
 
 function Item() {
     const navBar = [
-        { label: <Microsoft className="icon-navbar home-icon" />, href: '#' },
+        {
+            label: <img src={logo} alt="logo" className="icon-logo" />,
+            href: '#',
+        },
         { label: 'Cửa hàng', href: '#' },
         { label: 'Điện thoại', href: '#' },
         { label: 'Laptop', href: '#' },
