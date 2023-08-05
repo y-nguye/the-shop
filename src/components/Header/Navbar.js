@@ -20,8 +20,8 @@ function Item() {
         { label: <Bag className="icon-navbar bag-icon" />, href: '#' },
     ];
 
-    const listItemNavBar = navBar.map((x) => (
-        <li className="nav-bar__item">
+    const listItemNavBar = navBar.map((x, i) => (
+        <li className="nav-bar__item" key={i}>
             <span>{x.label}</span>
         </li>
     ));

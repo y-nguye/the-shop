@@ -1,0 +1,37 @@
+.nav-bar {
+    font-size: 12px;
+    width: 100%;
+    line-height: 0;
+
+    position: sticky;
+    top: 0;
+    color: aliceblue;
+    background-color: black;
+}
+
+.nav-bar__center {
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    margin: auto;
+}
+
+.title {
+    margin: 10px;
+}
+
+.nav-bar__list {
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-bar__item {
+    margin: 10px;
+}
+
+.nav-bar__item a {
+    text-decoration: none;
+    color: aliceblue;
+}
