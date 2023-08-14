@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Search, Bag } from 'react-bootstrap-icons';
 import logo from './img/thegioididong-logo.png';
 import './Navbar.scss';
@@ -6,23 +7,23 @@ function Item() {
     const navBar = [
         {
             label: <img src={logo} alt="logo" className="icon-logo" />,
-            href: '#',
+            href: '/',
         },
-        { label: 'Cửa hàng', href: '#' },
-        { label: 'Điện thoại', href: '#' },
-        { label: 'Laptop', href: '#' },
-        { label: 'Tablet', href: '#' },
-        { label: 'SmartWatch', href: '#' },
-        { label: 'Phụ kiện', href: '#' },
-        { label: 'Dịch vụ tiện ích', href: '#' },
-        { label: 'Hỗ trợ', href: '#' },
-        { label: <Search className="icon-navbar search-icon" />, href: '#' },
-        { label: <Bag className="icon-navbar bag-icon" />, href: '#' },
+        { label: 'Cửa hàng', href: '/store' },
+        { label: 'Điện thoại', href: '/smartphone' },
+        { label: 'Laptop', href: '/laptop' },
+        { label: 'Tablet', href: '/tablet' },
+        { label: 'SmartWatch', href: '/smartwatch' },
+        { label: 'Phụ kiện', href: '/accessories' },
+        { label: 'Dịch vụ tiện ích', href: '/services' },
+        { label: 'Hỗ trợ', href: '/support' },
+        { label: <Search className="icon-navbar search-icon" />, href: '/#' },
+        { label: <Bag className="icon-navbar bag-icon" />, href: '/#' },
     ];
 
     const listItemNavBar = navBar.map((x, i) => (
         <li className="nav-bar__item" key={i}>
-            <span>{x.label}</span>
+            <Link to={x.href}>{x.label}</Link>
         </li>
     ));
 

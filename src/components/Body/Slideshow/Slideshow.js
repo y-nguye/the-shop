@@ -1,32 +1,54 @@
-import { useEffect, useRef, useState } from 'react';
-import { register } from 'swiper/element/bundle';
-import { ArrowLeftShort, ArrowRightShort } from 'react-bootstrap-icons';
+import clsx from 'clsx';
 import { Images } from './Images';
-import './Slideshow.scss';
+import styles from './Slideshow.module.scss';
 
-const SlideshowList = ({ index }) => {
-    const swiperStyle = [
+function SlideShow({ index, transition, slideSize }) {
+    const slideShowList = clsx(styles.slideShowList);
+
+    return (
+        <div
+            className={slideShowList}
+            style={{
+                transform: `translateX(${transition}px)`,
+            }}
+        >
+            <SlideShowList index={index} slideSize={slideSize} />
+        </div>
+    );
+}
+
+function SlideShowList({ index, slideSize }) {
+    const slideShowItem__container = clsx(styles.slideShowItem__container);
+    const slideShowItem = clsx(styles.slideShowItem);
+
+    const swiperStyles = [
         {
-            width: '600px',
+            width: `${slideSize.larger}px`,
+            marginRight: `${slideSize.centered}px`,
         },
         {
-            width: '200px',
+            width: `${slideSize.mini}px`,
+            marginRight: `${slideSize.centered}px`,
         },
     ];
 
     return Images.map((x, i) => (
-        <swiper-slide key={i} style={swiperStyle[i === index ? 0 : 1]}>
+        <div
+            className={slideShowItem__container}
+            key={i}
+            style={swiperStyles[i === index ? 0 : 1]}
+        >
             <div
-                className="slide-show-item"
+                className={slideShowItem}
                 style={{ backgroundImage: `url(${x.image})` }}
             >
                 <div>
-                    <h1 style={{ opacity: (i === index && '1') || '0' }}>
+                    <h1 style={{ opacity: i === index ? '1' : '0' }}>
                         {x.title}
                     </h1>
                     <a
                         style={{
-                            visibility: (i === index && 'visible') || 'hidden',
+                            visibility: i === index ? 'visible' : 'hidden',
                         }}
                         href="http://example.com"
                     >
@@ -34,58 +56,8 @@ const SlideshowList = ({ index }) => {
                     </a>
                 </div>
             </div>
-        </swiper-slide>
-    ));
-};
-
-export default function Slideshow() {
-    const swiperRef = useRef(null);
-    const [index, setIndex] = useState(0);
-    // const [indexWeight, setIndexWeight] = useState(0);
-
-    useEffect(() => {
-        const typeWidth = ['auto', 3, 2, 1];
-        register();
-        const params = {
-            slidesPerView: typeWidth[0],
-            centeredSlides: true,
-            spaceBetween: 20,
-            mousewheel: true,
-            autoplay: {
-                delay: 4000,
-                pauseOnMouseEnter: true,
-            },
-            speed: 400,
-            parallax: true,
-            navigation: {
-                prevEl: '.slide-show__prev-button',
-                nextEl: '.slide-show__next-button',
-            },
-            pagination: {
-                clickable: true,
-            },
-            on: {
-                slideChange: (swiper) => {
-                    setIndex(swiper.realIndex);
-                },
-            },
-        };
-
-        Object.assign(swiperRef.current, params);
-        swiperRef.current.initialize();
-    }, []);
-
-    return (
-        <div className="slide-show__container">
-            <swiper-container init="false" ref={swiperRef}>
-                <SlideshowList index={index} />
-            </swiper-container>
-            <button className="slide-show__button slide-show__prev-button">
-                <ArrowLeftShort />
-            </button>
-            <button className="slide-show__button slide-show__next-button">
-                <ArrowRightShort />
-            </button>
         </div>
-    );
+    ));
 }
+
+export default SlideShow;
